@@ -1,0 +1,153 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Yesod.EmbeddedStatic.Generators</title><link href="ocean.css" rel="stylesheet" type="text/css" title="Ocean" /><script src="haddock-util.js" type="text/javascript"></script><script type="text/javascript">//<![CDATA[
+window.onload = function () {pageLoad();setSynopsis("mini_Yesod-EmbeddedStatic-Generators.html");};
+//]]>
+</script></head><body><div id="package-header"><ul class="links" id="page-menu"><li><a href="index.html">Contents</a></li><li><a href="doc-index.html">Index</a></li></ul><p class="caption">yesod-static-1.2.1: Static file serving subsite for Yesod Web Framework.</p></div><div id="content"><div id="module-header"><table class="info"><tr><th>Safe Haskell</th><td>None</td></tr></table><p class="caption">Yesod.EmbeddedStatic.Generators</p></div><div id="table-of-contents"><p class="caption">Contents</p><ul><li><a href="#g:1">Generators
+</a></li><li><a href="#g:2">Compression options for <code><a href="Yesod-EmbeddedStatic-Generators.html#v:concatFilesWith">concatFilesWith</a></code>
+</a></li><li><a href="#g:3">Util
+</a></li><li><a href="#g:4">Custom Generators
+</a></li></ul></div><div id="description"><p class="caption">Description</p><div class="doc"><p>A generator is executed at compile time to load a list of entries
+ to embed into the subsite.  This module contains several basic generators,
+ but the design of generators and entries is such that it is straightforward
+ to make custom generators for your own specific purposes, see <a href="#g:4">this section</a>.
+</p></div></div><div id="synopsis"><p id="control.syn" class="caption expander" onclick="toggleSection('syn')">Synopsis</p><ul id="section.syn" class="hide" onclick="toggleSection('syn')"><li class="src short"><span class="keyword">type</span> <a href="#t:Location">Location</a> = <a href="file:///usr/local/Cellar/ghc/7.6.3/share/doc/ghc/html/libraries/base-4.6.0.1/Data-String.html#t:String">String</a></li><li class="src short"><a href="#v:embedFile">embedFile</a> :: <a href="file:///usr/local/Cellar/ghc/7.6.3/share/doc/ghc/html/libraries/base-4.6.0.1/System-IO.html#t:FilePath">FilePath</a> -&gt; <a href="Yesod-EmbeddedStatic-Types.html#t:Generator">Generator</a></li><li class="src short"><a href="#v:embedFileAt">embedFileAt</a> :: <a href="Yesod-EmbeddedStatic-Generators.html#t:Location">Location</a> -&gt; <a href="file:///usr/local/Cellar/ghc/7.6.3/share/doc/ghc/html/libraries/base-4.6.0.1/System-IO.html#t:FilePath">FilePath</a> -&gt; <a href="Yesod-EmbeddedStatic-Types.html#t:Generator">Generator</a></li><li class="src short"><a href="#v:embedDir">embedDir</a> :: <a href="file:///usr/local/Cellar/ghc/7.6.3/share/doc/ghc/html/libraries/base-4.6.0.1/System-IO.html#t:FilePath">FilePath</a> -&gt; <a href="Yesod-EmbeddedStatic-Types.html#t:Generator">Generator</a></li><li class="src short"><a href="#v:embedDirAt">embedDirAt</a> :: <a href="Yesod-EmbeddedStatic-Generators.html#t:Location">Location</a> -&gt; <a href="file:///usr/local/Cellar/ghc/7.6.3/share/doc/ghc/html/libraries/base-4.6.0.1/System-IO.html#t:FilePath">FilePath</a> -&gt; <a href="Yesod-EmbeddedStatic-Types.html#t:Generator">Generator</a></li><li class="src short"><a href="#v:concatFiles">concatFiles</a> :: <a href="Yesod-EmbeddedStatic-Generators.html#t:Location">Location</a> -&gt; [<a href="file:///usr/local/Cellar/ghc/7.6.3/share/doc/ghc/html/libraries/base-4.6.0.1/System-IO.html#t:FilePath">FilePath</a>] -&gt; <a href="Yesod-EmbeddedStatic-Types.html#t:Generator">Generator</a></li><li class="src short"><a href="#v:concatFilesWith">concatFilesWith</a> :: <a href="Yesod-EmbeddedStatic-Generators.html#t:Location">Location</a> -&gt; (<a href="file:///usr/local/Cellar/ghc/7.6.3/share/doc/ghc/html/libraries/bytestring-0.10.0.2/Data-ByteString-Lazy.html#t:ByteString">ByteString</a> -&gt; <a href="file:///usr/local/Cellar/ghc/7.6.3/share/doc/ghc/html/libraries/base-4.6.0.1/System-IO.html#t:IO">IO</a> <a href="file:///usr/local/Cellar/ghc/7.6.3/share/doc/ghc/html/libraries/bytestring-0.10.0.2/Data-ByteString-Lazy.html#t:ByteString">ByteString</a>) -&gt; [<a href="file:///usr/local/Cellar/ghc/7.6.3/share/doc/ghc/html/libraries/base-4.6.0.1/System-IO.html#t:FilePath">FilePath</a>] -&gt; <a href="Yesod-EmbeddedStatic-Types.html#t:Generator">Generator</a></li><li class="src short"><a href="#v:jasmine">jasmine</a> :: <a href="file:///usr/local/Cellar/ghc/7.6.3/share/doc/ghc/html/libraries/bytestring-0.10.0.2/Data-ByteString-Lazy.html#t:ByteString">ByteString</a> -&gt; <a href="file:///usr/local/Cellar/ghc/7.6.3/share/doc/ghc/html/libraries/base-4.6.0.1/System-IO.html#t:IO">IO</a> <a href="file:///usr/local/Cellar/ghc/7.6.3/share/doc/ghc/html/libraries/bytestring-0.10.0.2/Data-ByteString-Lazy.html#t:ByteString">ByteString</a></li><li class="src short"><a href="#v:uglifyJs">uglifyJs</a> :: <a href="file:///usr/local/Cellar/ghc/7.6.3/share/doc/ghc/html/libraries/bytestring-0.10.0.2/Data-ByteString-Lazy.html#t:ByteString">ByteString</a> -&gt; <a href="file:///usr/local/Cellar/ghc/7.6.3/share/doc/ghc/html/libraries/base-4.6.0.1/System-IO.html#t:IO">IO</a> <a href="file:///usr/local/Cellar/ghc/7.6.3/share/doc/ghc/html/libraries/bytestring-0.10.0.2/Data-ByteString-Lazy.html#t:ByteString">ByteString</a></li><li class="src short"><a href="#v:yuiJavascript">yuiJavascript</a> :: <a href="file:///usr/local/Cellar/ghc/7.6.3/share/doc/ghc/html/libraries/bytestring-0.10.0.2/Data-ByteString-Lazy.html#t:ByteString">ByteString</a> -&gt; <a href="file:///usr/local/Cellar/ghc/7.6.3/share/doc/ghc/html/libraries/base-4.6.0.1/System-IO.html#t:IO">IO</a> <a href="file:///usr/local/Cellar/ghc/7.6.3/share/doc/ghc/html/libraries/bytestring-0.10.0.2/Data-ByteString-Lazy.html#t:ByteString">ByteString</a></li><li class="src short"><a href="#v:yuiCSS">yuiCSS</a> :: <a href="file:///usr/local/Cellar/ghc/7.6.3/share/doc/ghc/html/libraries/bytestring-0.10.0.2/Data-ByteString-Lazy.html#t:ByteString">ByteString</a> -&gt; <a href="file:///usr/local/Cellar/ghc/7.6.3/share/doc/ghc/html/libraries/base-4.6.0.1/System-IO.html#t:IO">IO</a> <a href="file:///usr/local/Cellar/ghc/7.6.3/share/doc/ghc/html/libraries/bytestring-0.10.0.2/Data-ByteString-Lazy.html#t:ByteString">ByteString</a></li><li class="src short"><a href="#v:closureJs">closureJs</a> :: <a href="file:///usr/local/Cellar/ghc/7.6.3/share/doc/ghc/html/libraries/bytestring-0.10.0.2/Data-ByteString-Lazy.html#t:ByteString">ByteString</a> -&gt; <a href="file:///usr/local/Cellar/ghc/7.6.3/share/doc/ghc/html/libraries/base-4.6.0.1/System-IO.html#t:IO">IO</a> <a href="file:///usr/local/Cellar/ghc/7.6.3/share/doc/ghc/html/libraries/bytestring-0.10.0.2/Data-ByteString-Lazy.html#t:ByteString">ByteString</a></li><li class="src short"><a href="#v:compressTool">compressTool</a> :: <a href="file:///usr/local/Cellar/ghc/7.6.3/share/doc/ghc/html/libraries/base-4.6.0.1/System-IO.html#t:FilePath">FilePath</a> -&gt; [<a href="file:///usr/local/Cellar/ghc/7.6.3/share/doc/ghc/html/libraries/base-4.6.0.1/Data-String.html#t:String">String</a>] -&gt; <a href="file:///usr/local/Cellar/ghc/7.6.3/share/doc/ghc/html/libraries/bytestring-0.10.0.2/Data-ByteString-Lazy.html#t:ByteString">ByteString</a> -&gt; <a href="file:///usr/local/Cellar/ghc/7.6.3/share/doc/ghc/html/libraries/base-4.6.0.1/System-IO.html#t:IO">IO</a> <a href="file:///usr/local/Cellar/ghc/7.6.3/share/doc/ghc/html/libraries/bytestring-0.10.0.2/Data-ByteString-Lazy.html#t:ByteString">ByteString</a></li><li class="src short"><a href="#v:tryCompressTools">tryCompressTools</a> :: [<a href="file:///usr/local/Cellar/ghc/7.6.3/share/doc/ghc/html/libraries/bytestring-0.10.0.2/Data-ByteString-Lazy.html#t:ByteString">ByteString</a> -&gt; <a href="file:///usr/local/Cellar/ghc/7.6.3/share/doc/ghc/html/libraries/base-4.6.0.1/System-IO.html#t:IO">IO</a> <a href="file:///usr/local/Cellar/ghc/7.6.3/share/doc/ghc/html/libraries/bytestring-0.10.0.2/Data-ByteString-Lazy.html#t:ByteString">ByteString</a>] -&gt; <a href="file:///usr/local/Cellar/ghc/7.6.3/share/doc/ghc/html/libraries/bytestring-0.10.0.2/Data-ByteString-Lazy.html#t:ByteString">ByteString</a> -&gt; <a href="file:///usr/local/Cellar/ghc/7.6.3/share/doc/ghc/html/libraries/base-4.6.0.1/System-IO.html#t:IO">IO</a> <a href="file:///usr/local/Cellar/ghc/7.6.3/share/doc/ghc/html/libraries/bytestring-0.10.0.2/Data-ByteString-Lazy.html#t:ByteString">ByteString</a></li><li class="src short"><a href="#v:pathToName">pathToName</a> :: <a href="file:///usr/local/Cellar/ghc/7.6.3/share/doc/ghc/html/libraries/base-4.6.0.1/System-IO.html#t:FilePath">FilePath</a> -&gt; <a href="file:///usr/local/Cellar/ghc/7.6.3/share/doc/ghc/html/libraries/template-haskell-2.8.0.0/Language-Haskell-TH-Syntax.html#t:Name">Name</a></li></ul></div><div id="interface"><h1 id="g:1">Generators
+</h1><div class="top"><p class="src"><span class="keyword">type</span> <a name="t:Location" class="def">Location</a> = <a href="file:///usr/local/Cellar/ghc/7.6.3/share/doc/ghc/html/libraries/base-4.6.0.1/Data-String.html#t:String">String</a></p><div class="doc"><p>A location is a relative path within the static subsite at which resource(s) are made available.
+ The location can include slashes to simulate directories but must not start or end with a slash.
+</p></div></div><div class="top"><p class="src"><a name="v:embedFile" class="def">embedFile</a> :: <a href="file:///usr/local/Cellar/ghc/7.6.3/share/doc/ghc/html/libraries/base-4.6.0.1/System-IO.html#t:FilePath">FilePath</a> -&gt; <a href="Yesod-EmbeddedStatic-Types.html#t:Generator">Generator</a></p><div class="doc"><p>Embed a single file.  Equivalent to passing the same string twice to <code><a href="Yesod-EmbeddedStatic-Generators.html#v:embedFileAt">embedFileAt</a></code>.
+</p></div></div><div class="top"><p class="src"><a name="v:embedFileAt" class="def">embedFileAt</a> :: <a href="Yesod-EmbeddedStatic-Generators.html#t:Location">Location</a> -&gt; <a href="file:///usr/local/Cellar/ghc/7.6.3/share/doc/ghc/html/libraries/base-4.6.0.1/System-IO.html#t:FilePath">FilePath</a> -&gt; <a href="Yesod-EmbeddedStatic-Types.html#t:Generator">Generator</a></p><div class="doc"><p>Embed a single file at a given location within the static subsite and generate a
+   route variable based on the location via <code><a href="Yesod-EmbeddedStatic-Generators.html#v:pathToName">pathToName</a></code>.  The <code>FilePath</code> must be a relative
+   path to the directory in which you run <code>cabal build</code>.  During development, the file located
+   at this filepath will be reloaded on every request.  When compiling for production, the contents
+   of the file will be embedded into the executable and so the file does not need to be
+   distributed along with the executable.
+</p></div></div><div class="top"><p class="src"><a name="v:embedDir" class="def">embedDir</a> :: <a href="file:///usr/local/Cellar/ghc/7.6.3/share/doc/ghc/html/libraries/base-4.6.0.1/System-IO.html#t:FilePath">FilePath</a> -&gt; <a href="Yesod-EmbeddedStatic-Types.html#t:Generator">Generator</a></p><div class="doc"><p>Embed all files in a directory into the static subsite.
+</p><p>Equivalent to passing the empty string as the location to <code><a href="Yesod-EmbeddedStatic-Generators.html#v:embedDirAt">embedDirAt</a></code>,
+ so the directory path itself is not part of the resource locations (and so
+ also not part of the generated route variable names).
+</p></div></div><div class="top"><p class="src"><a name="v:embedDirAt" class="def">embedDirAt</a> :: <a href="Yesod-EmbeddedStatic-Generators.html#t:Location">Location</a> -&gt; <a href="file:///usr/local/Cellar/ghc/7.6.3/share/doc/ghc/html/libraries/base-4.6.0.1/System-IO.html#t:FilePath">FilePath</a> -&gt; <a href="Yesod-EmbeddedStatic-Types.html#t:Generator">Generator</a></p><div class="doc"><p>Embed all files in a directory to a given location within the static subsite.
+</p><p>The directory tree rooted at the <code><a href="file:///usr/local/Cellar/ghc/7.6.3/share/doc/ghc/html/libraries/base-4.6.0.1/System-IO.html#t:FilePath">FilePath</a></code> (which must be relative to the directory in
+ which you run <code>cabal build</code>) is embedded into the static subsite at the given
+ location.  Also, route variables will be created based on the final location
+ of each file.  For example, if a directory &quot;static&quot; contains the files
+</p><ul><li> css/bootstrap.css
+</li><li> js/jquery.js
+</li><li> js/bootstrap.js
+</li></ul><p>then <code>embedDirAt &quot;somefolder&quot; &quot;static&quot;</code> will
+</p><ul><li> Make the file <code>static/css/bootstrap.css</code> available at the location
+   <code>somefolder/css/bootstrap.css</code> within the static subsite and similarly
+   for the other two files.
+</li><li> Create variables <code>somefolder_css_bootstrap_css</code>, <code>somefolder_js_jquery_js</code>,
+   <code>somefolder_js_bootstrap_js</code> all of type <code>Route EmbeddedStatic</code>.
+</li><li> During development, the files will be reloaded on every request.  During
+   production, the contents of all files will be embedded into the executable.
+</li><li> During development, files that are added to the directory while the server
+   is running will not be detected.  You need to recompile the module which
+   contains the call to <code>mkEmbeddedStatic</code>.  This will also generate new route
+   variables for the new files.
+</li></ul></div></div><div class="top"><p class="src"><a name="v:concatFiles" class="def">concatFiles</a> :: <a href="Yesod-EmbeddedStatic-Generators.html#t:Location">Location</a> -&gt; [<a href="file:///usr/local/Cellar/ghc/7.6.3/share/doc/ghc/html/libraries/base-4.6.0.1/System-IO.html#t:FilePath">FilePath</a>] -&gt; <a href="Yesod-EmbeddedStatic-Types.html#t:Generator">Generator</a></p><div class="doc"><p>Concatinate a list of files and embed it at the location.  Equivalent to passing <code>return</code> to
+   <code><a href="Yesod-EmbeddedStatic-Generators.html#v:concatFilesWith">concatFilesWith</a></code>.
+</p></div></div><div class="top"><p class="src"><a name="v:concatFilesWith" class="def">concatFilesWith</a> :: <a href="Yesod-EmbeddedStatic-Generators.html#t:Location">Location</a> -&gt; (<a href="file:///usr/local/Cellar/ghc/7.6.3/share/doc/ghc/html/libraries/bytestring-0.10.0.2/Data-ByteString-Lazy.html#t:ByteString">ByteString</a> -&gt; <a href="file:///usr/local/Cellar/ghc/7.6.3/share/doc/ghc/html/libraries/base-4.6.0.1/System-IO.html#t:IO">IO</a> <a href="file:///usr/local/Cellar/ghc/7.6.3/share/doc/ghc/html/libraries/bytestring-0.10.0.2/Data-ByteString-Lazy.html#t:ByteString">ByteString</a>) -&gt; [<a href="file:///usr/local/Cellar/ghc/7.6.3/share/doc/ghc/html/libraries/base-4.6.0.1/System-IO.html#t:FilePath">FilePath</a>] -&gt; <a href="Yesod-EmbeddedStatic-Types.html#t:Generator">Generator</a></p><div class="doc"><p>Concatinate a list of files into a single <code><a href="file:///usr/local/Cellar/ghc/7.6.3/share/doc/ghc/html/libraries/bytestring-0.10.0.2/Data-ByteString-Lazy.html#t:ByteString">ByteString</a></code>, run the resulting content through the given
+   function, embed it at the given location, and create a haskell variable name for the route based on
+   the location.
+</p><p>The processing function is only run when compiling for production, and the processing function is
+   executed at compile time.  During development, on every request the files listed are reloaded,
+   concatenated, and served as a single resource at the given location without being processed.
+</p></div></div><h1 id="g:2">Compression options for <code><a href="Yesod-EmbeddedStatic-Generators.html#v:concatFilesWith">concatFilesWith</a></code>
+</h1><div class="top"><p class="src"><a name="v:jasmine" class="def">jasmine</a> :: <a href="file:///usr/local/Cellar/ghc/7.6.3/share/doc/ghc/html/libraries/bytestring-0.10.0.2/Data-ByteString-Lazy.html#t:ByteString">ByteString</a> -&gt; <a href="file:///usr/local/Cellar/ghc/7.6.3/share/doc/ghc/html/libraries/base-4.6.0.1/System-IO.html#t:IO">IO</a> <a href="file:///usr/local/Cellar/ghc/7.6.3/share/doc/ghc/html/libraries/bytestring-0.10.0.2/Data-ByteString-Lazy.html#t:ByteString">ByteString</a></p><div class="doc"><p>Convienient rexport of <code><a href="file:///Users/dvekeman/github-vircures/appgent-ekiden-demo/.cabal-sandbox/share/doc/x86_64-osx-ghc-7.6.3/hjsmin-0.1.4.3/html/Text-Jasmine.html#v:minifym">minifym</a></code> with a type signature to work with <code><a href="Yesod-EmbeddedStatic-Generators.html#v:concatFilesWith">concatFilesWith</a></code>.
+</p></div></div><div class="top"><p class="src"><a name="v:uglifyJs" class="def">uglifyJs</a> :: <a href="file:///usr/local/Cellar/ghc/7.6.3/share/doc/ghc/html/libraries/bytestring-0.10.0.2/Data-ByteString-Lazy.html#t:ByteString">ByteString</a> -&gt; <a href="file:///usr/local/Cellar/ghc/7.6.3/share/doc/ghc/html/libraries/base-4.6.0.1/System-IO.html#t:IO">IO</a> <a href="file:///usr/local/Cellar/ghc/7.6.3/share/doc/ghc/html/libraries/bytestring-0.10.0.2/Data-ByteString-Lazy.html#t:ByteString">ByteString</a></p><div class="doc"><p>Use <a href="https://github.com/mishoo/UglifyJS2">UglifyJS2</a> to compress javascript.
+ Assumes <code>uglifyjs</code> is located in the path and uses options <code>[&quot;-m&quot;, &quot;-c&quot;]</code>
+ to both mangle and compress and the option &quot;-&quot; to cause uglifyjs to read from
+ standard input.
+</p></div></div><div class="top"><p class="src"><a name="v:yuiJavascript" class="def">yuiJavascript</a> :: <a href="file:///usr/local/Cellar/ghc/7.6.3/share/doc/ghc/html/libraries/bytestring-0.10.0.2/Data-ByteString-Lazy.html#t:ByteString">ByteString</a> -&gt; <a href="file:///usr/local/Cellar/ghc/7.6.3/share/doc/ghc/html/libraries/base-4.6.0.1/System-IO.html#t:IO">IO</a> <a href="file:///usr/local/Cellar/ghc/7.6.3/share/doc/ghc/html/libraries/bytestring-0.10.0.2/Data-ByteString-Lazy.html#t:ByteString">ByteString</a></p><div class="doc"><p>Use <a href="http://yui.github.io/yuicompressor/">YUI Compressor</a> to compress javascript.
+ Assumes a script <code>yuicompressor</code> is located in the path.  If not, you can still
+ use something like
+</p><pre> compressTool &quot;java&quot; [&quot;-jar&quot;, &quot;/path/to/yuicompressor.jar&quot;, &quot;--type&quot;, &quot;js&quot;]
+</pre></div></div><div class="top"><p class="src"><a name="v:yuiCSS" class="def">yuiCSS</a> :: <a href="file:///usr/local/Cellar/ghc/7.6.3/share/doc/ghc/html/libraries/bytestring-0.10.0.2/Data-ByteString-Lazy.html#t:ByteString">ByteString</a> -&gt; <a href="file:///usr/local/Cellar/ghc/7.6.3/share/doc/ghc/html/libraries/base-4.6.0.1/System-IO.html#t:IO">IO</a> <a href="file:///usr/local/Cellar/ghc/7.6.3/share/doc/ghc/html/libraries/bytestring-0.10.0.2/Data-ByteString-Lazy.html#t:ByteString">ByteString</a></p><div class="doc"><p>Use <a href="http://yui.github.io/yuicompressor/">YUI Compressor</a> to compress CSS.
+ Assumes a script <code>yuicompressor</code> is located in the path.
+</p></div></div><div class="top"><p class="src"><a name="v:closureJs" class="def">closureJs</a> :: <a href="file:///usr/local/Cellar/ghc/7.6.3/share/doc/ghc/html/libraries/bytestring-0.10.0.2/Data-ByteString-Lazy.html#t:ByteString">ByteString</a> -&gt; <a href="file:///usr/local/Cellar/ghc/7.6.3/share/doc/ghc/html/libraries/base-4.6.0.1/System-IO.html#t:IO">IO</a> <a href="file:///usr/local/Cellar/ghc/7.6.3/share/doc/ghc/html/libraries/bytestring-0.10.0.2/Data-ByteString-Lazy.html#t:ByteString">ByteString</a></p><div class="doc"><p>Use <a href="https://developers.google.com/closure/compiler/">Closure</a> to compress
+ javascript using the default options.  Assumes a script <code>closure</code> is located in
+ the path. If not, you can still run using
+</p><pre> compressTool &quot;java&quot; [&quot;-jar&quot;, &quot;/path/to/compiler.jar&quot;]
+</pre></div></div><div class="top"><p class="src"><a name="v:compressTool" class="def">compressTool</a></p><div class="subs arguments"><p class="caption">Arguments</p><table><tr><td class="src">:: <a href="file:///usr/local/Cellar/ghc/7.6.3/share/doc/ghc/html/libraries/base-4.6.0.1/System-IO.html#t:FilePath">FilePath</a></td><td class="doc"><p>program
+</p></td></tr><tr><td class="src">-&gt; [<a href="file:///usr/local/Cellar/ghc/7.6.3/share/doc/ghc/html/libraries/base-4.6.0.1/Data-String.html#t:String">String</a>]</td><td class="doc"><p>options
+</p></td></tr><tr><td class="src">-&gt; <a href="file:///usr/local/Cellar/ghc/7.6.3/share/doc/ghc/html/libraries/bytestring-0.10.0.2/Data-ByteString-Lazy.html#t:ByteString">ByteString</a></td><td class="doc empty">&nbsp;</td></tr><tr><td class="src">-&gt; <a href="file:///usr/local/Cellar/ghc/7.6.3/share/doc/ghc/html/libraries/base-4.6.0.1/System-IO.html#t:IO">IO</a> <a href="file:///usr/local/Cellar/ghc/7.6.3/share/doc/ghc/html/libraries/bytestring-0.10.0.2/Data-ByteString-Lazy.html#t:ByteString">ByteString</a></td><td class="doc empty">&nbsp;</td></tr></table></div><div class="doc"><p>Helper to convert a process into a compression function.  The process
+ should be set up to take input from standard input and write to standard output.
+</p></div></div><div class="top"><p class="src"><a name="v:tryCompressTools" class="def">tryCompressTools</a> :: [<a href="file:///usr/local/Cellar/ghc/7.6.3/share/doc/ghc/html/libraries/bytestring-0.10.0.2/Data-ByteString-Lazy.html#t:ByteString">ByteString</a> -&gt; <a href="file:///usr/local/Cellar/ghc/7.6.3/share/doc/ghc/html/libraries/base-4.6.0.1/System-IO.html#t:IO">IO</a> <a href="file:///usr/local/Cellar/ghc/7.6.3/share/doc/ghc/html/libraries/bytestring-0.10.0.2/Data-ByteString-Lazy.html#t:ByteString">ByteString</a>] -&gt; <a href="file:///usr/local/Cellar/ghc/7.6.3/share/doc/ghc/html/libraries/bytestring-0.10.0.2/Data-ByteString-Lazy.html#t:ByteString">ByteString</a> -&gt; <a href="file:///usr/local/Cellar/ghc/7.6.3/share/doc/ghc/html/libraries/base-4.6.0.1/System-IO.html#t:IO">IO</a> <a href="file:///usr/local/Cellar/ghc/7.6.3/share/doc/ghc/html/libraries/bytestring-0.10.0.2/Data-ByteString-Lazy.html#t:ByteString">ByteString</a></p><div class="doc"><p>Try a list of processing functions (like the compressions above) one by one until
+ one succeeds (does not raise an exception).  Once a processing function succeeds,
+ none of the remaining functions are used.  If none succeeds, the input is just
+ returned unprocessed.  This is helpful if you are distributing
+ code on hackage and do not know what compressors the user will have installed.  You
+ can list several and they will be tried in order until one succeeds.
+</p></div></div><h1 id="g:3">Util
+</h1><div class="top"><p class="src"><a name="v:pathToName" class="def">pathToName</a> :: <a href="file:///usr/local/Cellar/ghc/7.6.3/share/doc/ghc/html/libraries/base-4.6.0.1/System-IO.html#t:FilePath">FilePath</a> -&gt; <a href="file:///usr/local/Cellar/ghc/7.6.3/share/doc/ghc/html/libraries/template-haskell-2.8.0.0/Language-Haskell-TH-Syntax.html#t:Name">Name</a></p><div class="doc"><p>Clean up a path to make it a valid haskell name by replacing all non-letters
+   and non-numbers by underscores.  In addition, if the path starts with a capital
+   letter or number add an initial underscore.
+</p></div></div><h1 id="g:4">Custom Generators
+</h1><div class="doc"><p>Here is an example of creating your own custom generator.
+ Because of template haskell stage restrictions, you must define generators in a
+ different module from where you use them.  The following generator will embed a
+ JSON document that contains the compile time.
+</p><pre>{-# LANGUAGE TemplateHaskell, QuasiQuotes, OverloadedStrings #-}
+module CompileTime where
+
+import Data.Aeson
+import Data.Default
+import Data.Time
+import Yesod.EmbeddedStatic.Generators
+import Yesod.EmbeddedStatic.Types
+import qualified Data.ByteString.Lazy as BL
+
+getTime :: IO BL.ByteString
+getTime = do
+    t &lt;- getCurrentTime
+    return $ encode $
+        object [ &quot;compile_time&quot; .= show t ]
+
+timeGenerator :: Location -&gt; Generator
+timeGenerator loc =
+    return $ [def
+        { ebHaskellName = Just $ pathToName loc
+        , ebLocation    = loc
+        , ebMimeType    = &quot;application/json&quot;
+        , ebProductionContent = getTime
+        , ebDevelReload = [| getTime |]
+        }]
+</pre><p>Notice how the <code>getTime</code> action is given as both <code><a href="Yesod-EmbeddedStatic-Types.html#v:ebProductionContent">ebProductionContent</a></code> and
+ <code><a href="Yesod-EmbeddedStatic-Types.html#v:ebDevelReload">ebDevelReload</a></code>.  The result is that during development, the <code>getTime</code> action
+ will be re-executed on every request so the time returned will be different
+ for each reload.  When compiling for production, the <code>getTime</code> action will
+ be executed once at compile time to produce the content to embed and never
+ called at runtime.
+</p><p>Here is a small example yesod program using this generator.  Try toggling
+ the development argument to <code>mkEmbeddedStatic</code>.
+</p><pre>{-# LANGUAGE TemplateHaskell, QuasiQuotes, TypeFamilies #-}
+module Main where
+
+import Yesod
+import Yesod.EmbeddedStatic
+import CompileTime (timeGenerator)
+
+mkEmbeddedStatic True &quot;eStatic&quot; [timeGenerator &quot;compile-time.json&quot;]
+
+-- The above will generate variables
+-- eStatic :: EmbeddedStatic
+-- compile_time_json :: Route EmbeddedStatic
+
+data MyApp = MyApp { getStatic :: EmbeddedStatic }
+
+mkYesod &quot;MyApp&quot; [parseRoutes|
+/ HomeR GET
+/static StaticR EmbeddedStatic getStatic
+|]
+
+instance Yesod MyApp
+
+getHomeR :: Handler Html
+getHomeR = defaultLayout $ [whamlet|
+&lt;h1&gt;Hello
+&lt;p&gt;Check the 
+    &lt;a href=@{StaticR compile_time_json}&gt;compile time
+|]
+
+main :: IO ()
+main = warp 3000 $ MyApp eStatic
+</pre></div></div></div><div id="footer"><p>Produced by <a href="http://www.haskell.org/haddock/">Haddock</a> version 2.13.2</p></div></body></html>

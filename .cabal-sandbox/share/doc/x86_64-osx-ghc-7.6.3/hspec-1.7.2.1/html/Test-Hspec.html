@@ -1,0 +1,103 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Test.Hspec</title><link href="ocean.css" rel="stylesheet" type="text/css" title="Ocean" /><script src="haddock-util.js" type="text/javascript"></script><script type="text/javascript">//<![CDATA[
+window.onload = function () {pageLoad();setSynopsis("mini_Test-Hspec.html");};
+//]]>
+</script></head><body><div id="package-header"><ul class="links" id="page-menu"><li><a href="index.html">Contents</a></li><li><a href="doc-index.html">Index</a></li></ul><p class="caption">hspec-1.7.2.1: Behavior-Driven Development for Haskell</p></div><div id="content"><div id="module-header"><table class="info"><tr><th>Stability</th><td>stable</td></tr><tr><th>Safe Haskell</th><td>None</td></tr></table><p class="caption">Test.Hspec</p></div><div id="table-of-contents"><p class="caption">Contents</p><ul><li><a href="#g:1">Introduction
+</a></li><li><a href="#g:2">Types
+</a></li><li><a href="#g:3">Setting expectations
+</a></li><li><a href="#g:4">Defining a spec
+</a></li><li><a href="#g:5">Running a spec
+</a></li></ul></div><div id="description"><p class="caption">Description</p><div class="doc"><p>Hspec is a framework for <em>Behavior-Driven Development (BDD)</em> in Haskell. BDD
+ is an approach to software development that combines Test-Driven
+ Development, Domain-Driven Design, and Acceptance Test-Driven Planning.
+ Hspec helps you do the TDD part of that equation, focusing on the
+ documentation and design aspects of TDD.
+</p><p>Hspec (and the preceding intro) are based on the Ruby library RSpec. Much of
+ what applies to RSpec also applies to Hspec. Hspec ties together
+ <em>textual descriptions</em> of behavior and <em>examples</em> for that behavior.  The
+ examples serve as test cases for the specified behavior.  Hspec's mechanism
+ for examples is extensible.  Support for QuickCheck properties and HUnit
+ tests is included in the core package.
+</p></div></div><div id="synopsis"><p id="control.syn" class="caption expander" onclick="toggleSection('syn')">Synopsis</p><ul id="section.syn" class="hide" onclick="toggleSection('syn')"><li class="src short"><span class="keyword">type</span> <a href="#t:Spec">Spec</a> = <a href="Test-Hspec-Core.html#t:SpecM">SpecM</a> ()</li><li class="src short"><span class="keyword">class</span>  <a href="#t:Example">Example</a> a </li><li class="src short">module <a href="file:///Users/dvekeman/github-vircures/appgent-ekiden-demo/.cabal-sandbox/share/doc/x86_64-osx-ghc-7.6.3/hspec-expectations-0.3.3/html/Test-Hspec-Expectations.html">Test.Hspec.Expectations</a></li><li class="src short"><a href="#v:describe">describe</a> :: <a href="file:///usr/local/Cellar/ghc/7.6.3/share/doc/ghc/html/libraries/base-4.6.0.1/Data-String.html#t:String">String</a> -&gt; <a href="Test-Hspec.html#t:Spec">Spec</a> -&gt; <a href="Test-Hspec.html#t:Spec">Spec</a></li><li class="src short"><a href="#v:context">context</a> :: <a href="file:///usr/local/Cellar/ghc/7.6.3/share/doc/ghc/html/libraries/base-4.6.0.1/Data-String.html#t:String">String</a> -&gt; <a href="Test-Hspec.html#t:Spec">Spec</a> -&gt; <a href="Test-Hspec.html#t:Spec">Spec</a></li><li class="src short"><a href="#v:it">it</a> :: <a href="Test-Hspec.html#t:Example">Example</a> a =&gt; <a href="file:///usr/local/Cellar/ghc/7.6.3/share/doc/ghc/html/libraries/base-4.6.0.1/Data-String.html#t:String">String</a> -&gt; a -&gt; <a href="Test-Hspec.html#t:Spec">Spec</a></li><li class="src short"><a href="#v:example">example</a> :: <a href="file:///Users/dvekeman/github-vircures/appgent-ekiden-demo/.cabal-sandbox/share/doc/x86_64-osx-ghc-7.6.3/hspec-expectations-0.3.3/html/Test-Hspec-Expectations.html#t:Expectation">Expectation</a> -&gt; <a href="file:///Users/dvekeman/github-vircures/appgent-ekiden-demo/.cabal-sandbox/share/doc/x86_64-osx-ghc-7.6.3/hspec-expectations-0.3.3/html/Test-Hspec-Expectations.html#t:Expectation">Expectation</a></li><li class="src short"><a href="#v:pending">pending</a> :: <a href="file:///Users/dvekeman/github-vircures/appgent-ekiden-demo/.cabal-sandbox/share/doc/x86_64-osx-ghc-7.6.3/hspec-expectations-0.3.3/html/Test-Hspec-Expectations.html#t:Expectation">Expectation</a></li><li class="src short"><a href="#v:pendingWith">pendingWith</a> :: <a href="file:///usr/local/Cellar/ghc/7.6.3/share/doc/ghc/html/libraries/base-4.6.0.1/Data-String.html#t:String">String</a> -&gt; <a href="file:///Users/dvekeman/github-vircures/appgent-ekiden-demo/.cabal-sandbox/share/doc/x86_64-osx-ghc-7.6.3/hspec-expectations-0.3.3/html/Test-Hspec-Expectations.html#t:Expectation">Expectation</a></li><li class="src short"><a href="#v:before">before</a> :: <a href="file:///usr/local/Cellar/ghc/7.6.3/share/doc/ghc/html/libraries/base-4.6.0.1/System-IO.html#t:IO">IO</a> () -&gt; <a href="Test-Hspec.html#t:Spec">Spec</a> -&gt; <a href="Test-Hspec.html#t:Spec">Spec</a></li><li class="src short"><a href="#v:after">after</a> :: <a href="file:///usr/local/Cellar/ghc/7.6.3/share/doc/ghc/html/libraries/base-4.6.0.1/System-IO.html#t:IO">IO</a> () -&gt; <a href="Test-Hspec.html#t:Spec">Spec</a> -&gt; <a href="Test-Hspec.html#t:Spec">Spec</a></li><li class="src short"><a href="#v:around">around</a> :: (<a href="file:///usr/local/Cellar/ghc/7.6.3/share/doc/ghc/html/libraries/base-4.6.0.1/System-IO.html#t:IO">IO</a> () -&gt; <a href="file:///usr/local/Cellar/ghc/7.6.3/share/doc/ghc/html/libraries/base-4.6.0.1/System-IO.html#t:IO">IO</a> ()) -&gt; <a href="Test-Hspec.html#t:Spec">Spec</a> -&gt; <a href="Test-Hspec.html#t:Spec">Spec</a></li><li class="src short"><a href="#v:parallel">parallel</a> :: <a href="Test-Hspec.html#t:Spec">Spec</a> -&gt; <a href="Test-Hspec.html#t:Spec">Spec</a></li><li class="src short"><a href="#v:hspec">hspec</a> :: <a href="Test-Hspec.html#t:Spec">Spec</a> -&gt; <a href="file:///usr/local/Cellar/ghc/7.6.3/share/doc/ghc/html/libraries/base-4.6.0.1/System-IO.html#t:IO">IO</a> ()</li></ul></div><div id="interface"><h1 id="g:1">Introduction
+</h1><div class="doc"><p>The three functions you'll use the most are <code><a href="Test-Hspec.html#v:hspec">hspec</a></code>, <code><a href="Test-Hspec.html#v:describe">describe</a></code>, and <code><a href="Test-Hspec.html#v:it">it</a></code>.
+ Here is an example of functions that format and unformat phone numbers and
+ the specs for them.
+</p><pre> import Test.Hspec
+ import Test.QuickCheck
+ import Test.HUnit
+
+ main :: IO ()
+ main = hspec spec
+</pre><p>Since the specs are often used to tell you what to implement, it's best to
+ start with undefined functions. Once we have some specs, then you can
+ implement each behavior one at a time, ensuring that each behavior is met
+ and there is no undocumented behavior.
+</p><pre> unformatPhoneNumber :: String -&gt; String
+ unformatPhoneNumber = undefined
+
+ formatPhoneNumber :: String -&gt; String
+ formatPhoneNumber = undefined
+</pre><p>The <code><a href="Test-Hspec.html#v:describe">describe</a></code> function takes a list of behaviors and examples bound
+ together with the <code><a href="Test-Hspec.html#v:it">it</a></code> function
+</p><pre> spec :: Spec
+ spec = do
+   describe &quot;unformatPhoneNumber&quot; $ do
+</pre><p>A <code><a href="file:///usr/local/Cellar/ghc/7.6.3/share/doc/ghc/html/libraries/base-4.6.0.1/Data-Bool.html#t:Bool">Bool</a></code> can be used as an example.
+</p><pre>     it &quot;removes dashes, spaces, and parenthesies&quot; $
+       unformatPhoneNumber &quot;(555) 555-1234&quot; == &quot;5555551234&quot;
+</pre><p>The <code><a href="Test-Hspec.html#v:pending">pending</a></code> function marks a behavior as pending an example. The example
+ doesn't count as failing.
+</p><pre>     it &quot;handles non-US phone numbers&quot; $
+       pending &quot;need to look up how other cultures format phone numbers&quot;
+</pre><p>An HUnit <code><a href="file:///Users/dvekeman/github-vircures/appgent-ekiden-demo/.cabal-sandbox/share/doc/x86_64-osx-ghc-7.6.3/HUnit-1.2.5.2/html/Test-HUnit-Lang.html#t:Assertion">Assertion</a></code> can be used as an example.
+</p><pre>     it &quot;converts letters to numbers&quot; $ do
+       let expected = &quot;6862377&quot;
+           actual   = unformatPhoneNumber &quot;NUMBERS&quot;
+       actual @?= expected
+</pre><p>A QuickCheck <code><a href="file:///Users/dvekeman/github-vircures/appgent-ekiden-demo/.cabal-sandbox/share/doc/x86_64-osx-ghc-7.6.3/QuickCheck-2.6/html/Test-QuickCheck.html#t:Property">Property</a></code> can be used as an example.
+</p><pre>     it &quot;can add and remove formatting without changing the number&quot; $ property $
+       forAll phoneNumber $ \n -&gt; unformatPhoneNumber (formatPhoneNumber n) == n
+
+ phoneNumber :: Gen String
+ phoneNumber = do
+   n &lt;- elements [7,10,11,12,13,14,15]
+   vectorOf n (elements &quot;0123456789&quot;)
+</pre></div><h1 id="g:2">Types
+</h1><div class="top"><p class="src"><span class="keyword">type</span> <a name="t:Spec" class="def">Spec</a> = <a href="Test-Hspec-Core.html#t:SpecM">SpecM</a> ()</p></div><div class="top"><p class="src"><span class="keyword">class</span>  <a name="t:Example" class="def">Example</a> a </p><div class="doc"><p>A type class for examples.
+</p></div><div class="subs instances"><p id="control.i:Example" class="caption collapser" onclick="toggleSection('i:Example')">Instances</p><div id="section.i:Example" class="show"><table><tr><td class="src"><a href="Test-Hspec.html#t:Example">Example</a> <a href="file:///usr/local/Cellar/ghc/7.6.3/share/doc/ghc/html/libraries/base-4.6.0.1/Data-Bool.html#t:Bool">Bool</a></td><td class="doc empty">&nbsp;</td></tr><tr><td class="src"><a href="Test-Hspec.html#t:Example">Example</a> <a href="file:///Users/dvekeman/github-vircures/appgent-ekiden-demo/.cabal-sandbox/share/doc/x86_64-osx-ghc-7.6.3/HUnit-1.2.5.2/html/Test-HUnit-Base.html#t:Test">Test</a></td><td class="doc"><p>This instance is deprecated, use <code><a href="Test-Hspec-HUnit.html#v:fromHUnitTest">fromHUnitTest</a></code> instead!
+</p></td></tr><tr><td class="src"><a href="Test-Hspec.html#t:Example">Example</a> <a href="file:///Users/dvekeman/github-vircures/appgent-ekiden-demo/.cabal-sandbox/share/doc/x86_64-osx-ghc-7.6.3/QuickCheck-2.6/html/Test-QuickCheck-Property.html#t:Property">Property</a></td><td class="doc empty">&nbsp;</td></tr><tr><td class="src"><a href="Test-Hspec.html#t:Example">Example</a> <a href="file:///Users/dvekeman/github-vircures/appgent-ekiden-demo/.cabal-sandbox/share/doc/x86_64-osx-ghc-7.6.3/hspec-expectations-0.3.3/html/Test-Hspec-Expectations.html#t:Expectation">Expectation</a></td><td class="doc empty">&nbsp;</td></tr><tr><td class="src"><a href="Test-Hspec.html#t:Example">Example</a> <a href="Test-Hspec-Core.html#t:Result">Result</a></td><td class="doc empty">&nbsp;</td></tr></table></div></div></div><h1 id="g:3">Setting expectations
+</h1><div class="top"><p class="src">module <a href="file:///Users/dvekeman/github-vircures/appgent-ekiden-demo/.cabal-sandbox/share/doc/x86_64-osx-ghc-7.6.3/hspec-expectations-0.3.3/html/Test-Hspec-Expectations.html">Test.Hspec.Expectations</a></p></div><h1 id="g:4">Defining a spec
+</h1><div class="top"><p class="src"><a name="v:describe" class="def">describe</a> :: <a href="file:///usr/local/Cellar/ghc/7.6.3/share/doc/ghc/html/libraries/base-4.6.0.1/Data-String.html#t:String">String</a> -&gt; <a href="Test-Hspec.html#t:Spec">Spec</a> -&gt; <a href="Test-Hspec.html#t:Spec">Spec</a></p><div class="doc"><p>Combine a list of specs into a larger spec.
+</p></div></div><div class="top"><p class="src"><a name="v:context" class="def">context</a> :: <a href="file:///usr/local/Cellar/ghc/7.6.3/share/doc/ghc/html/libraries/base-4.6.0.1/Data-String.html#t:String">String</a> -&gt; <a href="Test-Hspec.html#t:Spec">Spec</a> -&gt; <a href="Test-Hspec.html#t:Spec">Spec</a></p><div class="doc"><p>An alias for <code><a href="Test-Hspec.html#v:describe">describe</a></code>.
+</p></div></div><div class="top"><p class="src"><a name="v:it" class="def">it</a> :: <a href="Test-Hspec.html#t:Example">Example</a> a =&gt; <a href="file:///usr/local/Cellar/ghc/7.6.3/share/doc/ghc/html/libraries/base-4.6.0.1/Data-String.html#t:String">String</a> -&gt; a -&gt; <a href="Test-Hspec.html#t:Spec">Spec</a></p><div class="doc"><p>Create a spec item.
+</p><p>A spec item consists of:
+</p><ul><li> a textual description of a desired behavior
+</li><li> an example for that behavior
+</li></ul><pre> describe &quot;absolute&quot; $ do
+   it &quot;returns a positive number when given a negative number&quot; $
+     absolute (-1) == 1
+</pre></div></div><div class="top"><p class="src"><a name="v:example" class="def">example</a> :: <a href="file:///Users/dvekeman/github-vircures/appgent-ekiden-demo/.cabal-sandbox/share/doc/x86_64-osx-ghc-7.6.3/hspec-expectations-0.3.3/html/Test-Hspec-Expectations.html#t:Expectation">Expectation</a> -&gt; <a href="file:///Users/dvekeman/github-vircures/appgent-ekiden-demo/.cabal-sandbox/share/doc/x86_64-osx-ghc-7.6.3/hspec-expectations-0.3.3/html/Test-Hspec-Expectations.html#t:Expectation">Expectation</a></p><div class="doc"><p>This is a type restricted version of <code><a href="file:///usr/local/Cellar/ghc/7.6.3/share/doc/ghc/html/libraries/base-4.6.0.1/Prelude.html#v:id">id</a></code>.  It can be used to get better
+ error messages on type mismatches.
+</p><p>Compare e.g.
+</p><pre> it &quot;exposes some behavior&quot; $ example $ do
+   putStrLn
+</pre><p>with
+</p><pre> it &quot;exposes some behavior&quot; $ do
+   putStrLn
+</pre></div></div><div class="top"><p class="src"><a name="v:pending" class="def">pending</a> :: <a href="file:///Users/dvekeman/github-vircures/appgent-ekiden-demo/.cabal-sandbox/share/doc/x86_64-osx-ghc-7.6.3/hspec-expectations-0.3.3/html/Test-Hspec-Expectations.html#t:Expectation">Expectation</a></p><div class="doc"><p>Specifies a pending example.
+</p><p>If you want to textually specify a behavior but do not have an example yet,
+ use this:
+</p><pre> describe &quot;fancyFormatter&quot; $ do
+   it &quot;can format text in a way that everyone likes&quot; $
+     pending
+</pre></div></div><div class="top"><p class="src"><a name="v:pendingWith" class="def">pendingWith</a> :: <a href="file:///usr/local/Cellar/ghc/7.6.3/share/doc/ghc/html/libraries/base-4.6.0.1/Data-String.html#t:String">String</a> -&gt; <a href="file:///Users/dvekeman/github-vircures/appgent-ekiden-demo/.cabal-sandbox/share/doc/x86_64-osx-ghc-7.6.3/hspec-expectations-0.3.3/html/Test-Hspec-Expectations.html#t:Expectation">Expectation</a></p><div class="doc"><p>Specifies a pending example with a reason for why it's pending.
+</p><pre> describe &quot;fancyFormatter&quot; $ do
+   it &quot;can format text in a way that everyone likes&quot; $
+     pendingWith &quot;waiting for clarification from the designers&quot;
+</pre></div></div><div class="top"><p class="src"><a name="v:before" class="def">before</a> :: <a href="file:///usr/local/Cellar/ghc/7.6.3/share/doc/ghc/html/libraries/base-4.6.0.1/System-IO.html#t:IO">IO</a> () -&gt; <a href="Test-Hspec.html#t:Spec">Spec</a> -&gt; <a href="Test-Hspec.html#t:Spec">Spec</a></p><div class="doc"><p>Run a custom action before every spec item.
+</p></div></div><div class="top"><p class="src"><a name="v:after" class="def">after</a> :: <a href="file:///usr/local/Cellar/ghc/7.6.3/share/doc/ghc/html/libraries/base-4.6.0.1/System-IO.html#t:IO">IO</a> () -&gt; <a href="Test-Hspec.html#t:Spec">Spec</a> -&gt; <a href="Test-Hspec.html#t:Spec">Spec</a></p><div class="doc"><p>Run a custom action after every spec item.
+</p></div></div><div class="top"><p class="src"><a name="v:around" class="def">around</a> :: (<a href="file:///usr/local/Cellar/ghc/7.6.3/share/doc/ghc/html/libraries/base-4.6.0.1/System-IO.html#t:IO">IO</a> () -&gt; <a href="file:///usr/local/Cellar/ghc/7.6.3/share/doc/ghc/html/libraries/base-4.6.0.1/System-IO.html#t:IO">IO</a> ()) -&gt; <a href="Test-Hspec.html#t:Spec">Spec</a> -&gt; <a href="Test-Hspec.html#t:Spec">Spec</a></p><div class="doc"><p>Run a custom action before and/or after every spec item.
+</p></div></div><div class="top"><p class="src"><a name="v:parallel" class="def">parallel</a> :: <a href="Test-Hspec.html#t:Spec">Spec</a> -&gt; <a href="Test-Hspec.html#t:Spec">Spec</a></p><div class="doc"><p>Run examples of given spec in parallel.
+</p></div></div><h1 id="g:5">Running a spec
+</h1><div class="top"><p class="src"><a name="v:hspec" class="def">hspec</a> :: <a href="Test-Hspec.html#t:Spec">Spec</a> -&gt; <a href="file:///usr/local/Cellar/ghc/7.6.3/share/doc/ghc/html/libraries/base-4.6.0.1/System-IO.html#t:IO">IO</a> ()</p><div class="doc"><p>Run given spec and write a report to <code><a href="file:///usr/local/Cellar/ghc/7.6.3/share/doc/ghc/html/libraries/base-4.6.0.1/GHC-IO-Handle-FD.html#v:stdout">stdout</a></code>.
+ Exit with <code><a href="file:///usr/local/Cellar/ghc/7.6.3/share/doc/ghc/html/libraries/base-4.6.0.1/System-Exit.html#v:exitFailure">exitFailure</a></code> if at least one spec item fails.
+</p></div></div></div></div><div id="footer"><p>Produced by <a href="http://www.haskell.org/haddock/">Haddock</a> version 2.13.2</p></div></body></html>
